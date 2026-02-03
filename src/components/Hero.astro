@@ -1,5 +1,6 @@
 ---
-
+import { Image } from "astro:assets";
+import fondoImg from "../assets/images/fondo.png";
 ---
 
 <section
@@ -8,8 +9,8 @@
 >
     <!-- Background Image/Video -->
     <div class="absolute inset-0 z-0">
-        <img
-            src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+        <Image
+            src={fondoImg}
             alt="Ambiente del restaurante"
             class="w-full h-full object-cover"
         />
@@ -48,31 +49,6 @@
                 Ver nuestra Carta
             </a>
         </div>
-    </div>
-
-    <!-- Scroll Down Indicator -->
-    <div
-        class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
-    >
-        <a
-            href="#menu"
-            class="text-sand-200 hover:text-white"
-            aria-label="Ir abajo"
-        >
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-10 w-10"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-        </a>
     </div>
 </section>
 

@@ -1,59 +1,80 @@
 ---
+import { Image } from "astro:assets";
+import logoSvg from "../assets/images/logo.svg";
 
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === "/" || currentPath === "";
+
+// Determine initial classes based on the page
+// Reduced padding to make header smaller
+const headerClass = isHome
+    ? "bg-sand-100/10 border-white/10 py-2"
+    : "bg-sand-100/80 shadow-sm py-1";
+
+const navLinkClass = isHome ? "text-sand-50" : "text-olive-800";
+
+const menuBtnClass = isHome ? "text-sand-50" : "text-olive-900";
 ---
 
 <header
     id="main-header"
-    class="fixed w-full z-50 transition-all duration-300 bg-sand-100/10 backdrop-blur-md border-b border-white/10"
+    data-is-home={isHome}
+    class={`fixed w-full z-50 transition-all duration-300 backdrop-blur-md border-b ${headerClass}`}
 >
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <!-- Logo -->
         <a
-            href="#"
-            class="text-3xl font-heading font-bold text-olive-900 tracking-wider"
+            href="/"
+            class="block w-16 md:w-20 transition-all duration-300 hover:scale-110"
         >
-            La Terraza Bar
+            <Image
+                src={logoSvg}
+                alt="La Terraza Bar Logo"
+                class="w-full h-auto drop-shadow-md"
+            />
         </a>
 
         <!-- Desktop Nav -->
         <nav class="hidden md:flex gap-8 items-center">
             <a
                 href="/"
-                class="text-olive-800 hover:text-terra-500 font-medium transition-colors"
+                class={`nav-link ${navLinkClass} hover:text-terra-500 font-medium transition-colors`}
                 >Inicio</a
             >
             <a
                 href="/carta"
-                class="text-olive-800 hover:text-terra-500 font-medium transition-colors"
+                class={`nav-link ${navLinkClass} hover:text-terra-500 font-medium transition-colors`}
                 >Carta</a
             >
             <a
                 href="/musica"
-                class="text-olive-800 hover:text-terra-500 font-medium transition-colors"
+                class={`nav-link ${navLinkClass} hover:text-terra-500 font-medium transition-colors`}
                 >Música</a
             >
             <a
                 href="/contacto"
-                class="text-olive-800 hover:text-terra-500 font-medium transition-colors"
+                class={`nav-link ${navLinkClass} hover:text-terra-500 font-medium transition-colors`}
                 >Contacto</a
             >
             <a
-                href="/contacto"
-                class="px-6 py-2 bg-olive-800 text-sand-100 rounded-full hover:bg-olive-900 transition-colors uppercase text-sm tracking-wide"
+                href="https://wa.me/50557267782"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-5 py-1.5 bg-olive-800 text-sand-100 rounded-full hover:bg-olive-900 transition-colors uppercase text-xs font-bold tracking-wide shadow-md"
             >
-                Reservar
+                Contáctanos
             </a>
         </nav>
 
         <!-- Mobile Menu Button -->
         <button
             id="menu-btn"
-            class="md:hidden text-olive-900 focus:outline-none"
+            class={`md:hidden focus:outline-none transition-colors ${menuBtnClass}`}
             aria-label="Abrir menú"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-8 w-8"
+                class="h-7 w-7"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -79,9 +100,11 @@
             >Contacto</a
         >
         <a
-            href="/contacto"
+            href="https://wa.me/50557267782"
+            target="_blank"
+            rel="noopener noreferrer"
             class="px-8 py-3 bg-olive-800 text-sand-100 rounded-full w-full text-center mt-2"
-            >Reservar</a
+            >Contáctanos</a
         >
     </div>
 </header>
@@ -95,19 +118,46 @@
         mobileMenu?.classList.toggle("hidden");
     });
 
-    // Sticky Header styles on scroll
+    // Sticky Header styles and Text Colors on scroll
     const header = document.getElementById("main-header");
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-            header?.classList.add("bg-sand-100/80", "py-2", "shadow-sm");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const isHome = header?.dataset.isHome === "true"; // Read the data attribute
+
+    function updateHeader() {
+        if (!isHome || window.scrollY > 50) {
+            // Scrolled State OR Not Home (Dark Text, Visible BG)
+            header?.classList.add("bg-sand-100/80", "py-1", "shadow-sm");
             header?.classList.remove(
                 "bg-sand-100/10",
-                "py-4",
+                "py-2",
                 "border-white/10",
             );
+
+            // Change Text Color to Dark
+            navLinks.forEach((link) => {
+                link.classList.remove("text-sand-50");
+                link.classList.add("text-olive-800");
+            });
+
+            menuBtn?.classList.remove("text-sand-50");
+            menuBtn?.classList.add("text-olive-900");
         } else {
-            header?.classList.add("bg-sand-100/10", "py-4", "border-white/10");
-            header?.classList.remove("bg-sand-100/80", "py-2", "shadow-sm");
+            // Top State & Home (Light Text, Transparent BG)
+            header?.classList.add("bg-sand-100/10", "py-2", "border-white/10");
+            header?.classList.remove("bg-sand-100/80", "py-1", "shadow-sm");
+
+            // Change Text Color to Light
+            navLinks.forEach((link) => {
+                link.classList.add("text-sand-50");
+                link.classList.remove("text-olive-800");
+            });
+
+            menuBtn?.classList.add("text-sand-50");
+            menuBtn?.classList.remove("text-olive-900");
         }
-    });
+    }
+
+    window.addEventListener("scroll", updateHeader);
+    // Initial check (in case we land scrolled down or on another page)
+    updateHeader();
 </script>

@@ -1,5 +1,7 @@
 ---
+import { getCollection } from "astro:content";
 
+const events = await getCollection("events");
 ---
 
 <section
@@ -38,28 +40,16 @@
                         Próximos Jueves
                     </h4>
                     <ul class="space-y-3">
-                        <li
-                            class="flex justify-between border-b border-white/10 pb-2"
-                        >
-                            <span>06 Feb</span>
-                            <span class="font-heading italic"
-                                >Erick Cortez y Abraham Mayorga</span
-                            >
-                        </li>
-                        <li
-                            class="flex justify-between border-b border-white/10 pb-2"
-                        >
-                            <span>13 Feb</span>
-                            <span class="font-heading italic">Cadejo</span>
-                        </li>
-                        <li
-                            class="flex justify-between border-b border-white/10 pb-2"
-                        >
-                            <span>20 Feb</span>
-                            <span class="font-heading italic"
-                                >Duo Los D'AKI</span
-                            >
-                        </li>
+                        {
+                            events.map((event) => (
+                                <li class="flex justify-between border-b border-white/10 pb-2">
+                                    <span>{event.data.date}</span>
+                                    <span class="font-heading italic">
+                                        {event.data.artist}
+                                    </span>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
             </div>

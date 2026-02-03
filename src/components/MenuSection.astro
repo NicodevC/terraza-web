@@ -1,75 +1,10 @@
 ---
-const menuData = {
-    platos: {
-        title: "Nuestros Platos",
-        sections: [
-            {
-                title: "Para Compartir",
-                items: [
-                    { name: "Papas con Queso Cheddar", price: "130C$" },
-                    {
-                        name: "Tostones con Queso Frito y Frijoles Picosos",
-                        price: "130C$",
-                    },
-                    { name: "Fajitas la Terraza (Pollo)", price: "190C$" },
-                    { name: "Nachos con Queso", price: "160C$" },
-                ],
-            },
-            {
-                title: "Alitas",
-                items: [
-                    { name: "6 Alitas de Pollo", price: "390C$" },
-                    { name: "12 Alitas de Pollo", price: "590C$" },
-                    { name: "18 Alitas de Pollo", price: "870C$" },
-                ],
-            },
-            {
-                title: "Seamos Serios",
-                items: [
-                    { name: "Filete de Pollo a la plancha", price: "180C$" },
-                    {
-                        name: "Brochetas mixtas (cerdo y pollo)",
-                        price: "250C$",
-                    },
-                ],
-            },
-        ],
-    },
-    bebidas: {
-        title: "Bebidas",
-        sections: [
-            {
-                title: "Cervezas",
-                items: [
-                    { name: "Cerveza Nacional", price: "50C$" },
-                    { name: "Cerveza Importada", price: "70C$" },
-                    { name: "Cerveza Artesanal", price: "90C$" },
-                ],
-            },
-            {
-                title: "Bebidas Alcohólicas Saborizadas",
-                items: [
-                    { name: "Smirnoff Ice", price: "80C$" },
-                    { name: "Bamboo", price: "70C$" },
-                ],
-            },
-            {
-                title: "SELTZER",
-                items: [
-                    { name: "White Claw", price: "100C$" },
-                    { name: "Truth", price: "100C$" },
-                ],
-            },
-            {
-                title: "Refrescos",
-                items: [
-                    { name: "Coca Cola", price: "30C$" },
-                    { name: "Té Lipton", price: "35C$" },
-                    { name: "Agua", price: "20C$" },
-                ],
-            },
-        ],
-    },
+import { getEntry } from "astro:content";
+
+const menuEntry = await getEntry("menu", "main");
+const menuData = menuEntry?.data || {
+    platos: { sections: [] },
+    bebidas: { sections: [] },
 };
 
 const categories = [
