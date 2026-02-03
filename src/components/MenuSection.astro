@@ -1,79 +1,10 @@
 ---
-const menuData = {
-    platos: {
-        title: "Nuestros Platos",
-        sections: [
-            {
-                title: "Para Compartir",
-                items: [
-                    { name: "Papas con Queso Cheddar", price: "130C$" },
-                    {
-                        name: "Tostones con Queso Frito y Frijoles Picosos",
-                        price: "130C$",
-                    },
-                    { name: "Fajitas la Terraza (Pollo)", price: "190C$" },
-                    { name: "Nachos con Queso", price: "160C$" },
-                ],
-            },
-            {
-                title: "Alitas",
-                items: [
-                    { name: "6 Alitas de Pollo", price: "390C$" },
-                    { name: "18 Alitas de Pollo", price: "870C$" },
-                    { name: "12 Alitas de Pollo", price: "590C$" },
-                ],
-            },
-            {
-                title: "Pongamonos Serios",
-                items: [
-                    { name: "Filete de Pollo a la plancha", price: "180C$" },
-                    {
-                        name: "Brochetas mixtas (cerdo y pollo)",
-                        price: "250C$",
-                    },
-                ],
-            },
-        ],
-    },
-    bebidas: {
-        title: "Bebidas",
-        sections: [
-            {
-                title: "Cervezas",
-                items: [
-                    { name: "Victoria Frost", price: "55C$" },
-                    { name: "Victoria Clásica", price: "60C$" },
-                    { name: "Victoria Maestro", price: "60C$" },
-                    { name: "Toña", price: "60C$" },
-                    { name: "Sol", price: "75C$" },
-                ],
-            },
-            {
-                title: "Bebidas Alcohólicas Saborizadas",
-                items: [
-                    { name: "Smirnoff", price: "85C$" },
-                    { name: "Bamboo", price: "65C$" },
-                    { name: "Bliss", price: "80C$" },
-                ],
-            },
-            {
-                title: "Seltzer",
-                items: [
-                    { name: "Hard Seltzer Spark Limón", price: "50C$" },
-                    { name: "Hard Seltzer Spark Hierbabuena", price: "50C$" },
-                    { name: "Hard Seltzer Spark Mandarina", price: "50C$" },
-                ],
-            },
-            {
-                title: "Refrescos",
-                items: [
-                    { name: "Coca Cola", price: "30C$" },
-                    { name: "Té Lipton", price: "35C$" },
-                    { name: "Agua", price: "20C$" },
-                ],
-            },
-        ],
-    },
+import { getEntry } from "astro:content";
+
+const menuEntry = await getEntry("menu", "main");
+const menuData = menuEntry?.data || {
+    platos: { sections: [] },
+    bebidas: { sections: [] },
 };
 
 const categories = [
