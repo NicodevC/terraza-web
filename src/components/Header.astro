@@ -1,0 +1,113 @@
+---
+
+---
+
+<header
+    id="main-header"
+    class="fixed w-full z-50 transition-all duration-300 bg-sand-100/10 backdrop-blur-md border-b border-white/10"
+>
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <a
+            href="#"
+            class="text-3xl font-heading font-bold text-olive-900 tracking-wider"
+        >
+            La Terraza Bar
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex gap-8 items-center">
+            <a
+                href="/"
+                class="text-olive-800 hover:text-terra-500 font-medium transition-colors"
+                >Inicio</a
+            >
+            <a
+                href="/carta"
+                class="text-olive-800 hover:text-terra-500 font-medium transition-colors"
+                >Carta</a
+            >
+            <a
+                href="/musica"
+                class="text-olive-800 hover:text-terra-500 font-medium transition-colors"
+                >Música</a
+            >
+            <a
+                href="/contacto"
+                class="text-olive-800 hover:text-terra-500 font-medium transition-colors"
+                >Contacto</a
+            >
+            <a
+                href="/contacto"
+                class="px-6 py-2 bg-olive-800 text-sand-100 rounded-full hover:bg-olive-900 transition-colors uppercase text-sm tracking-wide"
+            >
+                Reservar
+            </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button
+            id="menu-btn"
+            class="md:hidden text-olive-900 focus:outline-none"
+            aria-label="Abrir menú"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Mobile Nav (Hidden by default) -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-sand-100/95 backdrop-blur-xl border-b border-olive-100 p-6 flex flex-col gap-4 items-center shadow-lg"
+    >
+        <a href="/" class="text-xl text-olive-900 font-heading">Inicio</a>
+        <a href="/carta" class="text-xl text-olive-900 font-heading">Carta</a>
+        <a href="/musica" class="text-xl text-olive-900 font-heading">Música</a>
+        <a href="/contacto" class="text-xl text-olive-900 font-heading"
+            >Contacto</a
+        >
+        <a
+            href="/contacto"
+            class="px-8 py-3 bg-olive-800 text-sand-100 rounded-full w-full text-center mt-2"
+            >Reservar</a
+        >
+    </div>
+</header>
+
+<script>
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuBtn?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("hidden");
+    });
+
+    // Sticky Header styles on scroll
+    const header = document.getElementById("main-header");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            header?.classList.add("bg-sand-100/80", "py-2", "shadow-sm");
+            header?.classList.remove(
+                "bg-sand-100/10",
+                "py-4",
+                "border-white/10",
+            );
+        } else {
+            header?.classList.add("bg-sand-100/10", "py-4", "border-white/10");
+            header?.classList.remove("bg-sand-100/80", "py-2", "shadow-sm");
+        }
+    });
+</script>

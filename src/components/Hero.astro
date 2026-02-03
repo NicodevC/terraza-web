@@ -1,0 +1,101 @@
+---
+
+---
+
+<section
+    id="home"
+    class="relative h-screen flex items-center justify-center overflow-hidden"
+>
+    <!-- Background Image/Video -->
+    <div class="absolute inset-0 z-0">
+        <img
+            src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+            alt="Ambiente del restaurante"
+            class="w-full h-full object-cover"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-sand-100"
+        >
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+        <h2
+            class="text-sand-100 text-lg md:text-xl uppercase tracking-[0.2em] mb-4 animate-fade-in-up"
+        >
+            Bienvenidos a
+        </h2>
+        <h1
+            class="text-6xl md:text-8xl font-heading text-sand-50 font-bold mb-6 drop-shadow-lg animate-fade-in-up delay-100"
+        >
+            LA TERRAZA BAR
+        </h1>
+        <p
+            class="text-xl md:text-2xl text-sand-200 mb-10 font-light max-w-2xl mx-auto animate-fade-in-up delay-200"
+        >
+            Aquí se vive el buen rollo, se disfruta la buena comida y suena
+            música en vivo.
+        </p>
+
+        <div
+            class="flex flex-col md:flex-row gap-4 justify-center animate-fade-in-up delay-300"
+        >
+            <a
+                href="/carta"
+                class="px-8 py-4 bg-terra-500 text-sand-50 rounded-full font-medium hover:bg-terra-400 transition-all hover:scale-105 shadow-lg"
+            >
+                Ver nuestra Carta
+            </a>
+        </div>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div
+        class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+    >
+        <a
+            href="#menu"
+            class="text-sand-200 hover:text-white"
+            aria-label="Ir abajo"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </a>
+    </div>
+</section>
+
+<style>
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    .delay-100 {
+        animation-delay: 0.2s;
+    }
+    .delay-200 {
+        animation-delay: 0.4s;
+    }
+    .delay-300 {
+        animation-delay: 0.6s;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

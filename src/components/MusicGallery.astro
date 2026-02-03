@@ -1,0 +1,262 @@
+---
+
+---
+
+<section
+    id="music"
+    class="py-20 bg-olive-900 text-sand-50 overflow-hidden relative"
+>
+    <!-- Decorative background elements -->
+    <div
+        class="absolute top-0 left-0 w-64 h-64 bg-terra-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+    >
+    </div>
+    <div
+        class="absolute bottom-0 right-0 w-96 h-96 bg-olive-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Text Content -->
+            <div class="order-2 lg:order-1">
+                <h2
+                    class="text-4xl md:text-6xl font-heading font-bold mb-8 leading-tight"
+                >
+                    Música en Vivo
+                </h2>
+                <p class="text-xl text-sand-200 mb-8 font-light">
+                    Todos los <span class="text-terra-400 font-medium"
+                        >jueves por la noche</span
+                    >, el escenario de La Terraza bar cobra vida.
+                </p>
+
+                <div
+                    class="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 mb-8 hover:bg-white/10 transition-colors"
+                >
+                    <h4 class="text-xl font-bold mb-2 text-terra-400">
+                        Próximos Jueves
+                    </h4>
+                    <ul class="space-y-3">
+                        <li
+                            class="flex justify-between border-b border-white/10 pb-2"
+                        >
+                            <span>06 Feb</span>
+                            <span class="font-heading italic"
+                                >Erick Cortez y Abraham Mayorga</span
+                            >
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-white/10 pb-2"
+                        >
+                            <span>13 Feb</span>
+                            <span class="font-heading italic">Cadejo</span>
+                        </li>
+                        <li
+                            class="flex justify-between border-b border-white/10 pb-2"
+                        >
+                            <span>20 Feb</span>
+                            <span class="font-heading italic"
+                                >Duo Los D'AKI</span
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Inline Carousel -->
+            <div
+                class="order-1 lg:order-2 h-[500px] relative group rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10"
+            >
+                <!-- Carousel Container -->
+                <div id="carousel-track" class="w-full h-full relative">
+                    <!-- Slide 1 -->
+                    <div
+                        class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-100 z-10"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"
+                            alt="Concierto Jazz"
+                            class="w-full h-full object-cover"
+                        />
+                        <div
+                            class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent"
+                        >
+                            <span
+                                class="text-white font-heading text-3xl tracking-widest drop-shadow-lg"
+                                >JAZZ</span
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div
+                        class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0 z-0"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"
+                            alt="Cócteles y Ambiente"
+                            class="w-full h-full object-cover"
+                        />
+                        <div
+                            class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent"
+                        >
+                            <span
+                                class="text-white font-heading text-3xl tracking-widest drop-shadow-lg"
+                                >AMBIENTE</span
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div
+                        class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0 z-0"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"
+                            alt="Música en Vivo"
+                            class="w-full h-full object-cover"
+                        />
+                        <div
+                            class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent"
+                        >
+                            <span
+                                class="text-white font-heading text-3xl tracking-widest drop-shadow-lg"
+                                >EN VIVO</span
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <button
+                    id="prev-btn"
+                    class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-terra-500/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 z-20 cursor-pointer"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button
+                    id="next-btn"
+                    class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-terra-500/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 z-20 cursor-pointer"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+
+                <!-- Indicators -->
+                <div
+                    class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20"
+                >
+                    <button
+                        class="indicator w-12 h-1 bg-white hover:bg-white transition-all rounded-full cursor-pointer"
+                        data-index="0"></button>
+                    <button
+                        class="indicator w-2 h-1 bg-white/50 hover:bg-white transition-all rounded-full cursor-pointer"
+                        data-index="1"></button>
+                    <button
+                        class="indicator w-2 h-1 bg-white/50 hover:bg-white transition-all rounded-full cursor-pointer"
+                        data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const slides = document.querySelectorAll(".carousel-slide");
+    const indicators = document.querySelectorAll(".indicator");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    let currentSlide = 0;
+    let slideInterval: number;
+
+    function showSlide(index: number) {
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.classList.remove("opacity-0", "z-0");
+                slide.classList.add("opacity-100", "z-10");
+            } else {
+                slide.classList.remove("opacity-100", "z-10");
+                slide.classList.add("opacity-0", "z-0");
+            }
+        });
+
+        indicators.forEach((indicator, i) => {
+            if (i === index) {
+                indicator.classList.remove("w-2", "bg-white/50");
+                indicator.classList.add("w-12", "bg-white");
+            } else {
+                indicator.classList.remove("w-12", "bg-white");
+                indicator.classList.add("w-2", "bg-white/50");
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function startSlideShow() {
+        clearInterval(slideInterval);
+        slideInterval = window.setInterval(nextSlide, 5000);
+    }
+
+    function resetTimer() {
+        startSlideShow();
+    }
+
+    // Event Listeners
+    nextBtn?.addEventListener("click", () => {
+        nextSlide();
+        resetTimer();
+    });
+
+    prevBtn?.addEventListener("click", () => {
+        prevSlide();
+        resetTimer();
+    });
+
+    indicators.forEach((indicator) => {
+        indicator.addEventListener("click", (e) => {
+            const target = e.target as HTMLElement;
+            const index = parseInt(target.dataset.index || "0");
+            currentSlide = index;
+            showSlide(currentSlide);
+            resetTimer();
+        });
+    });
+
+    // Initialize
+    showSlide(0);
+    startSlideShow();
+</script>

@@ -1,0 +1,189 @@
+---
+const menuData = {
+    platos: {
+        title: "Nuestros Platos",
+        sections: [
+            {
+                title: "Para Compartir",
+                items: [
+                    { name: "Papas con Queso Cheddar", price: "130C$" },
+                    {
+                        name: "Tostones con Queso Frito y Frijoles Picosos",
+                        price: "130C$",
+                    },
+                    { name: "Fajitas la Terraza (Pollo)", price: "190C$" },
+                    { name: "Nachos con Queso", price: "160C$" },
+                ],
+            },
+            {
+                title: "Alitas",
+                items: [
+                    { name: "6 Alitas de Pollo", price: "390C$" },
+                    { name: "12 Alitas de Pollo", price: "590C$" },
+                    { name: "18 Alitas de Pollo", price: "870C$" },
+                ],
+            },
+            {
+                title: "Seamos Serios",
+                items: [
+                    { name: "Filete de Pollo a la plancha", price: "180C$" },
+                    {
+                        name: "Brochetas mixtas (cerdo y pollo)",
+                        price: "250C$",
+                    },
+                ],
+            },
+        ],
+    },
+    bebidas: {
+        title: "Bebidas",
+        sections: [
+            {
+                title: "Cervezas",
+                items: [
+                    { name: "Cerveza Nacional", price: "50C$" },
+                    { name: "Cerveza Importada", price: "70C$" },
+                    { name: "Cerveza Artesanal", price: "90C$" },
+                ],
+            },
+            {
+                title: "Bebidas Alcohólicas Saborizadas",
+                items: [
+                    { name: "Smirnoff Ice", price: "80C$" },
+                    { name: "Bamboo", price: "70C$" },
+                ],
+            },
+            {
+                title: "SELTZER",
+                items: [
+                    { name: "White Claw", price: "100C$" },
+                    { name: "Truth", price: "100C$" },
+                ],
+            },
+            {
+                title: "Refrescos",
+                items: [
+                    { name: "Coca Cola", price: "30C$" },
+                    { name: "Té Lipton", price: "35C$" },
+                    { name: "Agua", price: "20C$" },
+                ],
+            },
+        ],
+    },
+};
+
+const categories = [
+    { id: "platos", name: "Nuestros Platos" },
+    { id: "bebidas", name: "Bebidas" },
+];
+---
+
+<section id="menu" class="py-20 bg-sand-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2
+                class="text-terra-500 font-heading text-xl uppercase tracking-widest mb-2"
+            >
+                Para matar el hambre
+            </h2>
+            <h3
+                class="text-4xl md:text-5xl font-heading font-bold text-olive-900"
+            >
+                La Carta
+            </h3>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            {
+                categories.map((cat, index) => (
+                    <button
+                        class={`px-6 py-2 rounded-full border border-olive-200 transition-all duration-300 hover:bg-olive-800 hover:text-white menu-tab ${index === 0 ? "bg-olive-800 text-white active" : "text-olive-800 bg-transparent"}`}
+                        data-target={cat.id}
+                    >
+                        {cat.name}
+                    </button>
+                ))
+            }
+        </div>
+
+        <!-- Menu Content -->
+        <div class="min-h-[400px]">
+            {
+                Object.entries(menuData).map(([key, category]) => (
+                    <div
+                        id={key}
+                        class={`menu-category-content ${key === "platos" ? "" : "hidden"} animate-fade-in`}
+                    >
+                        <div class="space-y-16">
+                            {category.sections.map((section) => (
+                                <div class="menu-sub-group">
+                                    <h4 class="text-2xl font-heading font-bold text-olive-800 mb-8 pb-2 border-b-2 border-terra-500/20 inline-block">
+                                        {section.title}
+                                    </h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
+                                        {section.items.map((item) => (
+                                            <div class="flex justify-between items-baseline p-4 rounded-lg hover:bg-white hover:shadow-sm transition-all duration-200 border border-transparent hover:border-sand-200">
+                                                <span class="text-lg font-bold text-olive-900">
+                                                    {item.name}
+                                                </span>
+                                                <span class="text-lg font-bold text-terra-500">
+                                                    {item.price}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    const tabs = document.querySelectorAll(".menu-tab");
+    const contents = document.querySelectorAll(".menu-category-content");
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            // Update tabs
+            tabs.forEach((t) => {
+                t.classList.remove("bg-olive-800", "text-white");
+                t.classList.add("text-olive-800", "bg-transparent");
+            });
+            tab.classList.remove("text-olive-800", "bg-transparent");
+            tab.classList.add("bg-olive-800", "text-white");
+
+            // Update content
+            const targetId = tab.getAttribute("data-target");
+            contents.forEach((content) => {
+                if (content.id === targetId) {
+                    content.classList.remove("hidden");
+                    content.classList.add("animate-fade-in");
+                } else {
+                    content.classList.add("hidden");
+                    content.classList.remove("animate-fade-in");
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
