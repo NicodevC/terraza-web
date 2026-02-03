@@ -1,14 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import logoImg from "../assets/images/logo-png.jpeg";
+import logoSvg from "../assets/images/logo.svg";
 
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === "/" || currentPath === "";
 
 // Determine initial classes based on the page
+// Reduced padding to make header smaller
 const headerClass = isHome
-    ? "bg-sand-100/10 border-white/10 py-4"
-    : "bg-sand-100/80 shadow-sm py-2";
+    ? "bg-sand-100/10 border-white/10 py-2"
+    : "bg-sand-100/80 shadow-sm py-1";
 
 const navLinkClass = isHome ? "text-sand-50" : "text-olive-800";
 
@@ -24,12 +25,12 @@ const menuBtnClass = isHome ? "text-sand-50" : "text-olive-900";
         <!-- Logo -->
         <a
             href="/"
-            class="block w-24 md:w-32 transition-all duration-300 hover:scale-105"
+            class="block w-16 md:w-20 transition-all duration-300 hover:scale-110"
         >
             <Image
-                src={logoImg}
-                alt="La Terraza Bar"
-                class="w-full h-auto drop-shadow-md rounded-full"
+                src={logoSvg}
+                alt="La Terraza Bar Logo"
+                class="w-full h-auto drop-shadow-md"
             />
         </a>
 
@@ -59,7 +60,7 @@ const menuBtnClass = isHome ? "text-sand-50" : "text-olive-900";
                 href="https://wa.me/50557267782"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="px-6 py-2 bg-olive-800 text-sand-100 rounded-full hover:bg-olive-900 transition-colors uppercase text-sm tracking-wide shadow-md"
+                class="px-5 py-1.5 bg-olive-800 text-sand-100 rounded-full hover:bg-olive-900 transition-colors uppercase text-xs font-bold tracking-wide shadow-md"
             >
                 Contáctanos
             </a>
@@ -73,7 +74,7 @@ const menuBtnClass = isHome ? "text-sand-50" : "text-olive-900";
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-8 w-8"
+                class="h-7 w-7"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -125,10 +126,10 @@ const menuBtnClass = isHome ? "text-sand-50" : "text-olive-900";
     function updateHeader() {
         if (!isHome || window.scrollY > 50) {
             // Scrolled State OR Not Home (Dark Text, Visible BG)
-            header?.classList.add("bg-sand-100/80", "py-2", "shadow-sm");
+            header?.classList.add("bg-sand-100/80", "py-1", "shadow-sm");
             header?.classList.remove(
                 "bg-sand-100/10",
-                "py-4",
+                "py-2",
                 "border-white/10",
             );
 
@@ -142,8 +143,8 @@ const menuBtnClass = isHome ? "text-sand-50" : "text-olive-900";
             menuBtn?.classList.add("text-olive-900");
         } else {
             // Top State & Home (Light Text, Transparent BG)
-            header?.classList.add("bg-sand-100/10", "py-4", "border-white/10");
-            header?.classList.remove("bg-sand-100/80", "py-2", "shadow-sm");
+            header?.classList.add("bg-sand-100/10", "py-2", "border-white/10");
+            header?.classList.remove("bg-sand-100/80", "py-1", "shadow-sm");
 
             // Change Text Color to Light
             navLinks.forEach((link) => {

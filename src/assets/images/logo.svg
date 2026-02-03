@@ -1,0 +1,11 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="250" cy="250" r="240" stroke="#D4AF37" stroke-width="8" stroke-dasharray="10 5" />
+  <circle cx="250" cy="250" r="225" stroke="#D4AF37" stroke-width="2" />
+  
+  <text x="250" y="180" font-family="Brush Script MT, cursive" font-size="60" fill="#D4AF37" text-anchor="middle">la</text>
+  
+  <line x1="100" y1="210" x2="400" y2="210" stroke="#D4AF37" stroke-width="4" stroke-linecap="round" />
+  
+  <text x="250" y="320" font-family="Arial, sans-serif" font-weight="bold" font-size="85" fill="#D4AF37" text-anchor="middle" style="letter-spacing: 2px;">TERRAZA</text>
+  <text x="250" y="400" font-family="Brush Script MT, cursive" font-size="60" fill="#D4AF37" text-anchor="middle">bar</text>
+</svg>
