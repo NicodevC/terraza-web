@@ -1,5 +1,9 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import musicJazz from "../assets/images/music-jazz.jpg";
+import musicAmbiente from "../assets/images/music-ambiente.jpg";
+import musicLive from "../assets/images/music-live.jpg";
 
 const events = await getCollection("events");
 ---
@@ -64,10 +68,12 @@ const events = await getCollection("events");
                     <div
                         class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-100 z-10"
                     >
-                        <img
-                            src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"
+                        <Image
+                            src={musicJazz}
                             alt="Concierto Jazz"
                             class="w-full h-full object-cover"
+                            loading="eager"
+                            quality={80}
                         />
                         <div
                             class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent"
@@ -83,10 +89,12 @@ const events = await getCollection("events");
                     <div
                         class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0 z-0"
                     >
-                        <img
-                            src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"
+                        <Image
+                            src={musicAmbiente}
                             alt="Cócteles y Ambiente"
                             class="w-full h-full object-cover"
+                            loading="lazy"
+                            quality={80}
                         />
                         <div
                             class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent"
@@ -102,10 +110,12 @@ const events = await getCollection("events");
                     <div
                         class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0 z-0"
                     >
-                        <img
-                            src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"
+                        <Image
+                            src={musicLive}
                             alt="Música en Vivo"
                             class="w-full h-full object-cover"
+                            loading="lazy"
+                            quality={80}
                         />
                         <div
                             class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent"
