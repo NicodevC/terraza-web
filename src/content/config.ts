@@ -31,6 +31,8 @@ const eventsCollection = defineCollection({
     schema: z.object({
         date: z.string(),
         artist: z.string(),
+        time: z.string(),
+        description: z.string(),
     }),
 });
 

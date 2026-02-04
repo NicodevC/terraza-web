@@ -32,23 +32,30 @@ const events = await getCollection("events");
                     Música en Vivo
                 </h2>
                 <p class="text-xl text-sand-200 mb-8 font-light">
-                    Todos los <span class="text-terra-400 font-medium"
-                        >jueves por la noche</span
-                    >, el escenario de La Terraza bar cobra vida.
+                    <span class="text-terra-400 font-medium"
+                        >La Terraza Bar</span
+                    > la casa de la música viva y karaoke te trae
                 </p>
 
                 <div
                     class="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 mb-8 hover:bg-white/10 transition-colors"
                 >
                     <h4 class="text-xl font-bold mb-2 text-terra-400">
-                        Próximos Jueves
+                        Próximo evento
                     </h4>
                     <ul class="space-y-3">
                         {
                             events.map((event) => (
                                 <li class="flex justify-between border-b border-white/10 pb-2">
-                                    <span>{event.data.date}</span>
-                                    <span class="font-heading italic">
+                                    <div class="flex flex-col">
+                                        <span class="text-sm text-sand-300">
+                                            {event.data.date}
+                                        </span>
+                                        <span class="text-xs text-terra-400 capitalize">
+                                            {event.data.time}
+                                        </span>
+                                    </div>
+                                    <span class="font-heading italic self-center">
                                         {event.data.artist}
                                     </span>
                                 </li>
