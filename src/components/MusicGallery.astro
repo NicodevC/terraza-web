@@ -5,7 +5,17 @@ import musicJazz from "../assets/images/music-jazz.jpg";
 import musicAmbiente from "../assets/images/music-ambiente.jpg";
 import musicLive from "../assets/images/music-live.jpg";
 
-const events = await getCollection("events");
+// Get current date (set to start of day for comparison)
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const allEvents = await getCollection("events");
+const events = allEvents
+    .filter((event) => new Date(event.data.date) >= today)
+    .sort(
+        (a, b) =>
+            new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
+    );
 ---
 
 <section
@@ -49,7 +59,12 @@ const events = await getCollection("events");
                                 <li class="flex justify-between border-b border-white/10 pb-2">
                                     <div class="flex flex-col">
                                         <span class="text-sm text-sand-300">
-                                            {event.data.date}
+                                            {event.data.date
+                                                .toLocaleDateString("es-ES", {
+                                                    day: "2-digit",
+                                                    month: "short",
+                                                })
+                                                .replace(".", "")}
                                         </span>
                                         <span class="text-xs text-terra-400 capitalize">
                                             {event.data.time}
