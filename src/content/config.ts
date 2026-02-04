@@ -29,7 +29,7 @@ const menuCollection = defineCollection({
 const eventsCollection = defineCollection({
     type: 'content',
     schema: z.object({
-        date: z.string(),
+        date: z.date(),
         artist: z.string(),
         time: z.string(),
         description: z.string(),

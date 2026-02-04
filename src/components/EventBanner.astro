@@ -3,11 +3,30 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import cadejoBand from "../assets/images/cadejo-band.png";
 
+// Get current date (set to start of day for comparison)
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
 // Get the next upcoming event
-const events = await getCollection("events");
-const nextEvent = events[0]; // Assuming events are sorted by date
+const allEvents = await getCollection("events");
+const futureEvents = allEvents
+    .filter((event) => new Date(event.data.date) >= today)
+    .sort(
+        (a, b) =>
+            new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
+    );
+
+const nextEvent = futureEvents[0];
 
 if (!nextEvent) return null;
+
+// Format date for display (e.g., "06 Feb")
+const displayDate = nextEvent.data.date
+    .toLocaleDateString("es-ES", {
+        day: "2-digit",
+        month: "short",
+    })
+    .replace(".", ""); // Remove dot from month abbreviation if present
 ---
 
 <div
@@ -83,9 +102,7 @@ if (!nextEvent) return null;
                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                             ></path>
                         </svg>
-                        <span class="text-lg font-medium"
-                            >{nextEvent.data.date}</span
-                        >
+                        <span class="text-lg font-medium">{displayDate}</span>
                     </div>
                     <div
                         class="flex items-center justify-center md:justify-start gap-2"
@@ -137,13 +154,14 @@ if (!nextEvent) return null;
     </div>
 </div>
 
-<script>
+<script define:vars={{ artist: nextEvent.data.artist }}>
     const banner = document.getElementById("event-banner");
     const closeBtn = document.getElementById("close-banner");
-    const BANNER_STORAGE_KEY = "event-banner-closed-cadejo-feb06";
+    // Use artist name in the key so if artist changes, banner shows again even if previous one was closed
+    const BANNER_STORAGE_KEY = `event-banner-closed-${artist.toLowerCase().replace(/\s+/g, "-")}`;
 
-    // Check if banner was previously closed
-    const wasClosed = localStorage.getItem(BANNER_STORAGE_KEY);
+    // Check if banner was previously closed in THIS session
+    const wasClosed = sessionStorage.getItem(BANNER_STORAGE_KEY);
 
     if (!wasClosed) {
         // Show banner after a short delay
@@ -152,10 +170,10 @@ if (!nextEvent) return null;
         }, 1500);
     }
 
-    // Close banner and save to localStorage
+    // Close banner and save to sessionStorage (only for this session)
     closeBtn?.addEventListener("click", () => {
         banner?.classList.add("translate-y-full");
-        localStorage.setItem(BANNER_STORAGE_KEY, "true");
+        sessionStorage.setItem(BANNER_STORAGE_KEY, "true");
     });
 </script>
 
