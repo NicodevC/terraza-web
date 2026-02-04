@@ -2,6 +2,7 @@ backend:
   name: github
   repo: NicodevC/terraza-web # <--- ¡CAMBIA ESTO por tu usuario/repo de GitHub!
   branch: main
+  auth_endpoint: https://auth.decapcms.org/auth
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
