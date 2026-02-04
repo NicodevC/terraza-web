@@ -1,3 +1,4 @@
+<!-- 
 <!doctype html>
 <html>
     <head>
@@ -6,12 +7,33 @@
         <title>Content Manager</title>
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
         ></script>
-        <!-- Explicitly link to the config file in public/admin/config.yml -->
+         Explicitly link to the config file in public/admin/config.yml
         <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
     </head>
     <body>
-        <!-- Include the script that builds the page and powers Netlify CMS -->
+         Include the script that builds the page and powers Netlify CMS 
         <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"
         ></script>
+    </body>
+</html> 
+--><!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin</title>
+
+        <!-- 🔐 Evita que Decap se inicialice como Netlify -->
+        <script>
+            window.CMS_MANUAL_INIT = true;
+        </script>
+    </head>
+    <body>
+        <!-- Decap CMS -->
+        <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"
+        ></script>
+        <script>
+            CMS.init();
+        </script>
     </body>
 </html>
