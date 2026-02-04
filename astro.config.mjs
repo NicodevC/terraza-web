@@ -7,5 +7,11 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
+  },
+  image: {
+    // Configuración de optimización de imágenes
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    }
   }
 });
