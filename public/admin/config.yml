@@ -1,12 +1,12 @@
 backend:
   name: github
-  repo: tu-usuario/tu-repositorio # <--- ¡CAMBIA ESTO por tu usuario/repo de GitHub!
+  repo: NicodevC/terraza-web # <--- ¡CAMBIA ESTO por tu usuario/repo de GitHub!
   branch: main
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
-local_backend: true
+local_backend: false
 
 collections:
   - name: "menu"
