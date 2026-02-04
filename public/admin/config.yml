@@ -1,8 +1,9 @@
 backend:
   name: github
-  repo: NicodevC/terraza-web # <--- ¡CAMBIA ESTO por tu usuario/repo de GitHub!
+  repo: NicodevC/terraza-web
   branch: main
-  auth_endpoint: https://auth.decapcms.org/auth
+  base_url: https://terraza-web.vercel.app
+  auth_endpoint: api/auth
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
@@ -44,6 +45,8 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}"
     fields:
-      - { name: "date", label: "Date (e.g. 06 Feb)", widget: "string" }
+      - { name: "date", label: "Event Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD MMM", time_format: false }
       - { name: "artist", label: "Artist Name", widget: "string" }
-      - { name: "body", label: "Details", widget: "markdown", required: false }
+      - { name: "time", label: "Show Time (e.g. 7:00 PM)", widget: "string" }
+      - { name: "description", label: "Short Description", widget: "string" }
+      - { name: "body", label: "Full Details (Optional)", widget: "markdown", required: false }
