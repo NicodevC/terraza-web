@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import cadejo from "../assets/images/cadejo.png";
 import ambiente from "../assets/images/ambiente.png";
 import ambienteFront from "../assets/images/ambiente-front.png";
+import karaoke from "../assets/images/karaoke.jpeg";
 
 // Get current date (set to start of day for comparison)
 const today = new Date();
@@ -150,58 +151,79 @@ const events = allEvents
                     </div>
                 </div>
 
-                <!-- Controls -->
-                <button
-                    id="prev-btn"
-                    class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-terra-500/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 z-20 cursor-pointer"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </button>
-                <button
-                    id="next-btn"
-                    class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-terra-500/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 z-20 cursor-pointer"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
-
-                <!-- Indicators -->
+                <!-- Slide 3 -->
                 <div
-                    class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20"
+                    class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0 z-0"
                 >
-                    <button
-                        class="indicator w-12 h-1 bg-white hover:bg-white transition-all rounded-full cursor-pointer"
-                        data-index="0"></button>
-                    <button
-                        class="indicator w-2 h-1 bg-white/50 hover:bg-white transition-all rounded-full cursor-pointer"
-                        data-index="1"></button>
-                    <button
-                        class="indicator w-2 h-1 bg-white/50 hover:bg-white transition-all rounded-full cursor-pointer"
-                        data-index="2"></button>
+                    <Image
+                        src={karaoke}
+                        alt="Música en Vivo"
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                        quality={80}
+                    />
+                    <div
+                        class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent"
+                    >
+                        <span
+                            class="text-white font-heading text-3xl tracking-widest drop-shadow-lg"
+                            >KARAOKE</span
+                        >
+                    </div>
                 </div>
+            </div>
+
+            <!-- Controls -->
+            <button
+                id="prev-btn"
+                class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-terra-500/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 z-20 cursor-pointer"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button
+                id="next-btn"
+                class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-terra-500/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 z-20 cursor-pointer"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+
+            <!-- Indicators -->
+            <div
+                class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20"
+            >
+                <button
+                    class="indicator w-12 h-1 bg-white hover:bg-white transition-all rounded-full cursor-pointer"
+                    data-index="0"></button>
+                <button
+                    class="indicator w-2 h-1 bg-white/50 hover:bg-white transition-all rounded-full cursor-pointer"
+                    data-index="1"></button>
+                <button
+                    class="indicator w-2 h-1 bg-white/50 hover:bg-white transition-all rounded-full cursor-pointer"
+                    data-index="2"></button>
             </div>
         </div>
     </div>
