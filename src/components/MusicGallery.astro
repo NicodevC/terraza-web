@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import musicJazz from "../assets/images/music-jazz.jpg";
-import musicAmbiente from "../assets/images/music-ambiente.jpg";
-import musicLive from "../assets/images/music-live.jpg";
+import cadejo from "../assets/images/cadejo.png";
+import ambiente from "../assets/images/ambiente.png";
+import ambienteFront from "../assets/images/ambiente-front.png";
 
 // Get current date (set to start of day for comparison)
 const today = new Date();
@@ -91,7 +91,7 @@ const events = allEvents
                         class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-100 z-10"
                     >
                         <Image
-                            src={musicJazz}
+                            src={cadejo}
                             alt="Concierto Jazz"
                             class="w-full h-full object-cover"
                             loading="eager"
@@ -102,7 +102,7 @@ const events = allEvents
                         >
                             <span
                                 class="text-white font-heading text-3xl tracking-widest drop-shadow-lg"
-                                >JAZZ</span
+                                >Cadejo Rock</span
                             >
                         </div>
                     </div>
@@ -112,7 +112,7 @@ const events = allEvents
                         class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0 z-0"
                     >
                         <Image
-                            src={musicAmbiente}
+                            src={ambiente}
                             alt="Cócteles y Ambiente"
                             class="w-full h-full object-cover"
                             loading="lazy"
@@ -133,7 +133,7 @@ const events = allEvents
                         class="carousel-slide absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-0 z-0"
                     >
                         <Image
-                            src={musicLive}
+                            src={ambienteFront}
                             alt="Música en Vivo"
                             class="w-full h-full object-cover"
                             loading="lazy"
@@ -144,7 +144,7 @@ const events = allEvents
                         >
                             <span
                                 class="text-white font-heading text-3xl tracking-widest drop-shadow-lg"
-                                >EN VIVO</span
+                                >AMBIENTE</span
                             >
                         </div>
                     </div>

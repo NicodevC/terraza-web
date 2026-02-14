@@ -10,7 +10,11 @@ today.setHours(0, 0, 0, 0);
 // Get the next upcoming event
 const allEvents = await getCollection("events");
 const futureEvents = allEvents
-    .filter((event) => new Date(event.data.date) >= today)
+    .filter((event) => {
+        const eventDate = new Date(event.data.date);
+        eventDate.setHours(0, 0, 0, 0);
+        return eventDate.getTime() >= today.getTime();
+    })
     .sort(
         (a, b) =>
             new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
@@ -26,7 +30,9 @@ const displayDate = nextEvent.data.date
         day: "2-digit",
         month: "short",
     })
-    .replace(".", ""); // Remove dot from month abbreviation if present
+    .replace(".", "");
+
+const eventTimestamp = new Date(nextEvent.data.date).getTime();
 ---
 
 <div
@@ -156,27 +162,36 @@ const displayDate = nextEvent.data.date
     </div>
 </div>
 
-<script define:vars={{ artist: nextEvent.data.artist }}>
+<script define:vars={{ artist: nextEvent.data.artist, eventTimestamp }}>
     const banner = document.getElementById("event-banner");
     const closeBtn = document.getElementById("close-banner");
-    // Use artist name in the key so if artist changes, banner shows again even if previous one was closed
-    const BANNER_STORAGE_KEY = `event-banner-closed-${artist.toLowerCase().replace(/\s+/g, "-")}`;
 
-    // Check if banner was previously closed in THIS session
-    const wasClosed = sessionStorage.getItem(BANNER_STORAGE_KEY);
+    // Client-side check: hide if event date is in the past
+    // This handles cases where a static build might be stale
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    if (!wasClosed) {
-        // Show banner after a short delay
-        setTimeout(() => {
-            banner?.classList.remove("translate-y-full");
-        }, 1500);
+    if (eventTimestamp < today.getTime()) {
+        // If the event has already passed, don't show anything
+        if (banner) banner.style.display = "none";
+    } else {
+        // Use artist name in the key so if artist changes, banner shows again
+        const BANNER_STORAGE_KEY = `event-banner-closed-${artist.toLowerCase().replace(/\s+/g, "-")}`;
+        const wasClosed = sessionStorage.getItem(BANNER_STORAGE_KEY);
+
+        if (!wasClosed) {
+            // Show banner after a short delay
+            setTimeout(() => {
+                banner?.classList.remove("translate-y-full");
+            }, 1500);
+        }
+
+        // Close banner and save to sessionStorage
+        closeBtn?.addEventListener("click", () => {
+            banner?.classList.add("translate-y-full");
+            sessionStorage.setItem(BANNER_STORAGE_KEY, "true");
+        });
     }
-
-    // Close banner and save to sessionStorage (only for this session)
-    closeBtn?.addEventListener("click", () => {
-        banner?.classList.add("translate-y-full");
-        sessionStorage.setItem(BANNER_STORAGE_KEY, "true");
-    });
 </script>
 
 <style>

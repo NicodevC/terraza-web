@@ -5,24 +5,33 @@
             {
                 "title": "Para Compartir",
                 "items": [
-                    { "name": "Papas con Queso Cheddar", "price": "130C$" },
-                    { "name": "Tostones con Queso Frito y Frijoles Picosos", "price": "130C$" },
-                    { "name": "Fajitas la Terraza (Pollo)", "price": "190C$" },
-                    { "name": "Nachos con Queso", "price": "160C$" }
+                    { "name": "Salchipapas", "price": "100C$" },
+                    { "name": "Tostones con Queso", "price": "150C$" },
+                    { "name": "Boquita", "price": "250C$" },
+                    { "name": "Cóctel de conchas", "price": "150C$" },
+                    { "name": "Huevo de paslama", "price": "50C$" }
+                    
                 ]
             },
             {
                 "title": "Alitas",
                 "items": [
-                    { "name": "6 Alitas de Pollo", "price": "390C$" },
-                    { "name": "12 Alitas de Pollo", "price": "590C$" },
-                    { "name": "18 Alitas de Pollo", "price": "870C$" }
+                    { "name": "6 Alitas de Pollo", "price": "220C$" },
+                    { "name": "12 Alitas de Pollo", "price": "380C$" },
+                    { "name": "18 Alitas de Pollo", "price": "500C$" }
+                ]
+            },
+            {
+                "title": "Variados",
+                "items": [
+                    { "name": "Variado", "price": "400C$" },
+                    { "name": "Variado grande", "price": "800C$" }
                 ]
             },
             {
                 "title": "Platos Principales",
                 "items": [
-                    { "name": "Filete de Pollo a la plancha", "price": "180C$" },
+                    { "name": "Pollo a la plancha", "price": "180C$" },
                     { "name": "Brochetas mixtas (cerdo y pollo)", "price": "250C$" }
                 ]
             }

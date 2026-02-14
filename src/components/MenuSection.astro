@@ -1,11 +1,26 @@
 ---
 import { getEntry } from "astro:content";
 
+interface MenuItem {
+    name: string;
+    price: string;
+}
+
+interface MenuSection {
+    title: string;
+    items: MenuItem[];
+}
+
+interface MenuCategory {
+    title: string;
+    sections: MenuSection[];
+}
+
 const menuEntry = await getEntry("menu", "main");
-const menuData = menuEntry?.data || {
+const menuData = (menuEntry?.data || {
     platos: { sections: [] },
     bebidas: { sections: [] },
-};
+}) as Record<string, MenuCategory>;
 
 const categories = [
     { id: "platos", name: "Nuestros Platos" },
@@ -38,37 +53,61 @@ const categories = [
         </div>
 
         <!-- Menu Content -->
-        <div class="min-h-[400px]">
-            {
-                Object.entries(menuData).map(([key, category]) => (
-                    <div
-                        id={key}
-                        class={`menu-category-content ${key === "platos" ? "" : "hidden"} animate-fade-in`}
-                    >
-                        <div class="space-y-16">
-                            {category.sections.map((section) => (
-                                <div class="menu-sub-group">
-                                    <h4 class="text-2xl font-heading font-bold text-olive-800 mb-8 pb-2 border-b-2 border-terra-500/20 inline-block">
-                                        {section.title}
-                                    </h4>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
-                                        {section.items.map((item) => (
-                                            <div class="flex justify-between items-baseline p-4 rounded-lg hover:bg-white hover:shadow-sm transition-all duration-200 border border-transparent hover:border-sand-200">
-                                                <span class="text-lg font-bold text-olive-900">
-                                                    {item.name}
-                                                </span>
-                                                <span class="text-lg font-bold text-terra-500">
-                                                    {item.price}
-                                                </span>
+        <div class="max-w-5xl mx-auto">
+            <div
+                class="relative bg-white p-8 md:p-12 shadow-xl rounded-2xl border border-sand-200"
+            >
+                <!-- Subtle Paper Texture Overlay -->
+                <div
+                    class="absolute inset-0 opacity-[0.1] pointer-events-none mix-blend-multiply grain-texture rounded-2xl"
+                >
+                </div>
+
+                <div class="relative z-10">
+                    {
+                        Object.entries(menuData).map(([key, category]) => (
+                            <div
+                                id={key}
+                                class={`menu-category-content ${key === "platos" ? "" : "hidden"} animate-fade-in`}
+                            >
+                                <div class="space-y-16">
+                                    {category.sections.map(
+                                        (section: MenuSection) => (
+                                            <div class="menu-sub-group">
+                                                <div class="flex items-center gap-4 mb-8">
+                                                    <h4 class="text-2xl font-heading font-bold text-olive-950 whitespace-nowrap uppercase tracking-widest">
+                                                        {section.title}
+                                                    </h4>
+                                                    <div class="h-[1px] w-full bg-olive-950/10" />
+                                                </div>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
+                                                    {section.items.map(
+                                                        (item: MenuItem) => (
+                                                            <div class="group flex items-baseline gap-4 p-3 rounded-md transition-all duration-300 hover:bg-terra-500/5 hover:translate-x-1 cursor-default">
+                                                                <div class="flex-1 flex items-baseline gap-2">
+                                                                    <span class="text-lg font-medium text-olive-900 group-hover:text-terra-800 transition-colors">
+                                                                        {
+                                                                            item.name
+                                                                        }
+                                                                    </span>
+                                                                    <div class="flex-1 border-b border-dotted border-olive-950/20 translate-y-[-4px]" />
+                                                                </div>
+                                                                <span class="text-lg font-bold text-terra-600 whitespace-nowrap">
+                                                                    {item.price}
+                                                                </span>
+                                                            </div>
+                                                        ),
+                                                    )}
+                                                </div>
                                             </div>
-                                        ))}
-                                    </div>
+                                        ),
+                                    )}
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-                ))
-            }
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -103,6 +142,10 @@ const categories = [
 </script>
 
 <style>
+    .grain-texture {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
     .animate-fade-in {
         animation: fadeIn 0.5s ease-out forwards;
     }
