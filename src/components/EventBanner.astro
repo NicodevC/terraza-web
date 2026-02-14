@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import cadejoBand from "../assets/images/cadejo-band.png";
+import eventoBase from "../assets/images/san-valentin.png";
 
 // Get current date (set to start of day for comparison)
 const today = new Date();
@@ -70,7 +70,7 @@ const eventTimestamp = new Date(nextEvent.data.date).getTime();
                 class="flex-shrink-0 w-full md:w-48 h-48 rounded-xl overflow-hidden shadow-lg ring-4 ring-terra-500/30"
             >
                 <Image
-                    src={cadejoBand}
+                    src={eventoBase}
                     alt="Cadejo - Grupo de Rock"
                     class="w-full h-full object-cover"
                     loading="eager"
