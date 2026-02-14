@@ -43,19 +43,22 @@
             {
                 "title": "Cervezas",
                 "items": [
-                    { "name": "Victoria Frost", "price": "55C$" },
-                    { "name": "Victoria Clásica", "price": "60C$" },
-                    { "name": "Victoria Maestro", "price": "60C$" },
-                    { "name": "Toña", "price": "60C$" },
-                    { "name": "Sol", "price": "75C$" }
+                    { "name": "Toña", "price": "50C$" },
+                    { "name": "Toña lata", "price": "50C$" },
+                    { "name": "Victoria Frost", "price": "50C$" },
+                    { "name": "Victoria Clásica", "price": "50C$" },
+                    { "name": "Victoria Maestro", "price": "55C$" },
+                    { "name": "Sol", "price": "75C$" },
+                    { "name": "Heineken", "price": "80C$" },
+                    { "name": "Boreal", "price": "60C$" }
                 ]
             },
             {
                 "title": "Bebidas Alcohólicas Saborizadas",
                 "items": [
-                    { "name": "Smirnoff", "price": "85C$" },
-                    { "name": "Bamboo", "price": "65C$" },
-                    { "name": "Bliss", "price": "80C$" }
+                    { "name": "Smirnoff", "price": "90C$" },
+                    { "name": "Bamboo", "price": "55C$" },
+                    { "name": "Bliss", "price": "85C$" }
                 ]
             },
             {
@@ -69,9 +72,13 @@
             {
                 "title": "Refrescos",
                 "items": [
-                    { "name": "Coca Cola", "price": "30C$" },
-                    { "name": "Té Lipton", "price": "35C$" },
-                    { "name": "Agua", "price": "20C$" }
+                    { "name": "Gaseosas", "price": "30C$" },
+                    { "name": "Ensa", "price": "30C$" },
+                    { "name": "Power", "price": "50C$" },
+                    { "name": "Agua", "price": "30C$" },
+                    { "name": "Jugo del valle", "price": "40C$" },
+                    { "name": "Hi ci", "price": "25C$" },
+                    { "name": "Te limon hi ci", "price": "30C$" }
                 ]
             }
         ]
